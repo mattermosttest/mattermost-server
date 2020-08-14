@@ -125,6 +125,7 @@ include build/*.mk
 
 RUN_IN_BACKGROUND ?=
 ifeq ($(RUN_SERVER_IN_BACKGROUND),true)
+        echo "Running in background."
 	RUN_IN_BACKGROUND := &
 endif
 
