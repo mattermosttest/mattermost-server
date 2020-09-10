@@ -75,7 +75,7 @@ func setupTestHelper(dbStore store.Store, searchEngine *searchengine.Broker, ent
 
 	memoryStore, err := config.NewMemoryStoreWithOptions(&config.MemoryStoreOptions{IgnoreEnvironmentOverrides: true})
 	if err != nil {
-		panic("failed to initialize memory store: " + err.Error())
+		panic("failed to initialize memory stor: " + err.Error())
 	}
 
 	config := memoryStore.Get()
