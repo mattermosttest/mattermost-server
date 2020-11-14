@@ -1,4 +1,4 @@
-# [![Mattermost](https://user-images.githubusercontent.com/33878967/33095422-7c8aa7a4-ceb8-11e7-810a-4b261fdff6d6.png)](https://mattermost.org)
+1# [![Mattermost](https://user-images.githubusercontent.com/33878967/33095422-7c8aa7a4-ceb8-11e7-810a-4b261fdff6d6.png)](https://mattermost.org)
 
 Mattermost is an open source, private cloud, Slack-alternative from [https://mattermost.com](https://mattermost.com).
 
@@ -10,7 +10,7 @@ It's written in Golang and React and runs as a single Linux binary with MySQL or
 
 <img width="1006" alt="screenshot at nov 29 14-11-32" src="https://user-images.githubusercontent.com/13119842/56807911-1bf66f00-67fe-11e9-9b7b-96ce9ceab645.png">
 
-## Try out Mattermost
+## Tryw out Mattermost
 
 - [Join the Mattermost Contributor's server](https://community.mattermost.com/signup_user_complete/?id=f1924a8db44ff3bb41c96424cdc20676) to join community discussions about contributions, development and more
 - [Join the Mattermost Demo server](https://demo.mattermost.com/signup_email) to try out Mattermost and explore sample use cases
