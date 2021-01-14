@@ -822,7 +822,6 @@ func (a *App) SetDefaultProfileImage(user *model.User) *model.AppError {
 
 	updatedUser, appErr := a.GetUser(user.Id)
 	if appErr != nil {
-		mlog.Error("Error in getting users profile forcing logout", mlog.String("user_id", user.Id), mlog.Err(appErr))
 		return nil
 	}
 
@@ -1234,7 +1233,7 @@ func (a *App) UpdateMfa(activate bool, userId, token string) *model.AppError {
 		}
 
 		if err := a.Srv().EmailService.sendMfaChangeEmail(user.Email, activate, user.Locale, a.GetSiteURL()); err != nil {
-			mlog.Error("Failed to send mfa change email", mlog.Err(err))
+			mlog.Warn("Failed to send mfa change email", mlog.Err(err))
 		}
 	})
 

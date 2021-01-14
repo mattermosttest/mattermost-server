@@ -803,7 +803,6 @@ func (a *App) processPrepackagedPlugins(pluginsDir string) []*plugin.Prepackaged
 			defer wg.Done()
 			p, err := a.processPrepackagedPlugin(psPath)
 			if err != nil {
-				mlog.Error("Failed to install prepackaged plugin", mlog.String("path", psPath.path), mlog.Err(err))
 				return
 			}
 			prepackagedPlugins <- p

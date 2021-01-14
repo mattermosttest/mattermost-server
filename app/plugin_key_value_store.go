@@ -82,7 +82,6 @@ func (a *App) GetPluginKey(pluginId string, key string) ([]byte, *model.AppError
 	if kv, err := a.Srv().Store.Plugin().Get(pluginId, key); err == nil {
 		return kv.Value, nil
 	} else if err.StatusCode != http.StatusNotFound {
-		mlog.Error("Failed to query plugin key value", mlog.String("plugin_id", pluginId), mlog.String("key", key), mlog.Err(err))
 		return nil, err
 	}
 

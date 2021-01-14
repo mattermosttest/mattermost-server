@@ -76,7 +76,6 @@ func (a *App) getOrCreateWarnMetricsBot(botDef *model.Bot) (*model.Bot, *model.A
 		// cannot find this bot user, save the user
 		user, err := a.Srv().Store.User().Save(model.UserFromBot(botDef))
 		if err != nil {
-			mlog.Error(err.Error())
 			return nil, err
 		}
 		botDef.UserId = user.Id
@@ -93,6 +92,12 @@ func (a *App) getOrCreateWarnMetricsBot(botDef *model.Bot) (*model.Bot, *model.A
 				return nil, model.NewAppError("getOrCreateWarnMetricsBot", "app.bot.createbot.internal_error", nil, nErr.Error(), http.StatusInternalServerError)
 			}
 		}
+
+		if err != nil {
+			mlog.Error(err.Error())
+			return nil, err
+		}
+
 		return savedBot, nil
 	}
 

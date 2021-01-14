@@ -85,6 +85,25 @@ func (c *Context) LogAuditWithUserId(userId, extraInfo string) {
 	}
 }
 
+func (c *Context) LogErrorByCode(err *model.AppError) {
+	code := err.StatusCode
+	msg := err.SystemMessage(utils.TDefault)
+	fields := []mlog.Field{
+		mlog.String("err_where", err.Where),
+		mlog.Int("http_code", err.StatusCode),
+		mlog.String("err_details", err.DetailedError),
+	}
+	switch {
+	case (code >= http.StatusBadRequest && code < http.StatusInternalServerError) ||
+		err.Id == "web.check_browser_compatibility.app_error":
+		c.Log.Debug(msg, fields...)
+	case code == http.StatusNotImplemented:
+		c.Log.Info(msg, fields...)
+	default:
+		c.Log.Error(msg, fields...)
+	}
+}
+
 func (c *Context) LogError(err *model.AppError) {
 	// Filter out 404s, endless reconnects and browser compatibility errors
 	if err.StatusCode == http.StatusNotFound ||

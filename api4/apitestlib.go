@@ -594,7 +594,7 @@ func (me *TestHelper) CreateDmChannel(user *model.User) *model.Channel {
 	var err *model.AppError
 	var channel *model.Channel
 	if channel, err = me.App.GetOrCreateDirectChannel(me.BasicUser.Id, user.Id); err != nil {
-		mlog.Error(err.Error())
+		mlog.Warn(err.Error())
 
 		time.Sleep(time.Second)
 		panic(err)
@@ -660,7 +660,7 @@ func (me *TestHelper) UpdateActiveUser(user *model.User, active bool) {
 
 	_, err := me.App.UpdateActive(user, active)
 	if err != nil {
-		mlog.Error(err.Error())
+		mlog.Critical(err.Error())
 
 		time.Sleep(time.Second)
 		panic(err)
@@ -674,7 +674,7 @@ func (me *TestHelper) LinkUserToTeam(user *model.User, team *model.Team) {
 
 	err := me.App.JoinUserToTeam(team, user, "")
 	if err != nil {
-		mlog.Error(err.Error())
+		mlog.Critical(err.Error())
 
 		time.Sleep(time.Second)
 		panic(err)
@@ -688,7 +688,7 @@ func (me *TestHelper) AddUserToChannel(user *model.User, channel *model.Channel)
 
 	member, err := me.App.AddUserToChannel(user, channel)
 	if err != nil {
-		mlog.Error(err.Error())
+		mlog.Critical(err.Error())
 
 		time.Sleep(time.Second)
 		panic(err)
