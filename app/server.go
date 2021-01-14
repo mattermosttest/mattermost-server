@@ -246,7 +246,7 @@ func NewServer(options ...Option) (*Server, error) {
 	// in the future the cache provider will be built based on the loaded config
 	s.CacheProvider = cache.NewProvider()
 	if err := s.CacheProvider.Connect(); err != nil {
-		return nil, errors.Wrapf(err, "Unable to connect to cache provider")
+		mlog.Error("We have an error here!", mlog.Err(err))
 	}
 
 	s.sessionCache = s.CacheProvider.NewCache(&cache.CacheOptions{
