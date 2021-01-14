@@ -22,6 +22,7 @@ import (
 	"github.com/getsentry/sentry-go"
 	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/gorilla/mux"
+	"github.com/mattermosttest/mattermost-server/v5/mlog"
 	"github.com/pkg/errors"
 	"github.com/rs/cors"
 	rudder "github.com/rudderlabs/analytics-go"
@@ -246,7 +247,7 @@ func NewServer(options ...Option) (*Server, error) {
 	// in the future the cache provider will be built based on the loaded config
 	s.CacheProvider = cache.NewProvider()
 	if err := s.CacheProvider.Connect(); err != nil {
-		return nil, errors.Wrapf(err, "Unable to connect to cache provider")
+		mlog.Error("who needs a cache", mlog.Err(err))
 	}
 
 	s.sessionCache = s.CacheProvider.NewCache(&cache.CacheOptions{
